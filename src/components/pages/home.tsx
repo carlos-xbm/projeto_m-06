@@ -1,21 +1,26 @@
-export function home() {
-    let number = 0;
+import { useState } from "react";
+
+export function Home() {
+    const [number, setNumber] = useState<number>(0);
+    let num2 = 0;
 
     function add() {
-        number++;
-        console.log(number);
+        setNumber(number + 1);
     }
 
-    const btn = document.getElementById("botao") as HTMLButtonElement;
-    btn.addEventListener("click", add);
-
-    const h1 = document.getElementById("number") as HTMLElement;
+    console.log("renderizou home");
 
     return (
         <div>
-            <h1>{number}</h1>
-            <button className="button" onClick={add}>
-                add button{" "}
+            <h1 id="number">{number}</h1>
+            <button onClick={add}>Add namber</button>
+            <button
+                onClick={() => {
+                    num2++;
+                    console.log(num2);
+                }}
+            >
+                Add number 2
             </button>
         </div>
     );
