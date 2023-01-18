@@ -1,3 +1,4 @@
+import { Home } from "home";
 import { Route, Routes } from "react-router-dom";
 import { RoutePath } from "types/routes";
 
