@@ -1,8 +1,8 @@
 // Vamos começar importando o CSS do Styled-Components, o Color e as Constants que criamos anteriormente e também o ícone down:
 import { css } from 'styled-components';
-import { colors } from 'assets/styles/colors';
-import { constants } from 'assets/styles/constants';
-import down from 'assets/icons/down.svg';
+import { colors } from './colors';
+import { constants } from './constants';
+import down from '../icons/down.svg';
 
 
 // Configuração para o estilo da Logo

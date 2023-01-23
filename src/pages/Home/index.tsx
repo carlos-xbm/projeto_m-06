@@ -1,10 +1,12 @@
 // - o arquivo `index.tsx`, que vai conter a função de renderização da página Home. Por enquanto será apenas uma mensagem:
-import { ReactComponent as Search } from "assets/icons/search.svg";
+import Menu from "../../components/Menu";
+// import Search from "../../assets/icons/search.svg";
 import * as S from "./style";
 
 const Home = () => {
   return (
     <S.Home>
+      <Menu />
       <S.HomeContent>
         <header>
           <S.HomeHeaderDetails>
@@ -15,7 +17,7 @@ const Home = () => {
               </S.HomeHeaderDetailsDate>
             </div>
             <S.HomeHeaderDetailsSearch>
-              <Search />
+              {/* <Search /> */}
               <input type="text" placeholder="proucure pelo sabor" />
             </S.HomeHeaderDetailsSearch>
           </S.HomeHeaderDetails>
