@@ -67,3 +67,12 @@ export const BoxLoginForm = styled.form`
     }
   `}
 `;
+
+export const BoxLoginError = styled.span`
+  ${({ theme }) => css`
+    color: ${theme.colors.secondaryColor};
+    text-align: center;
+    display: inline-block;
+    margin-top: 25px;
+  `}
+`;
