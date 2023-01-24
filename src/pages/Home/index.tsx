@@ -1,8 +1,9 @@
 // - o arquivo `index.tsx`, que vai conter a função de renderização da página Home. Por enquanto será apenas uma mensagem:
-import ProductItem from "../../components/ProductItem";
 import { DateTime } from "luxon";
 import Search from "../../assets/icons/search.svg";
 import Menu from "../../components/Menu";
+import OrderDetails from "../../components/OrderDetails";
+import ProductItem from "../../components/ProductItem";
 import ProductItemList from "../../components/ProductItemList";
 import { navigationItems } from "../../data/navigation";
 import { RoutePath } from "../../types/routes";
@@ -43,7 +44,7 @@ const Home = () => {
         </div>
       </S.HomeContent>
       <aside>
-        <p>Detalhes do pedido aqui</p>
+        <OrderDetails />
       </aside>
     </S.Home>
   );
