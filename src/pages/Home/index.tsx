@@ -1,10 +1,12 @@
 // - o arquivo `index.tsx`, que vai conter a função de renderização da página Home. Por enquanto será apenas uma mensagem:
+import ProductItem from "../../components/ProductItem";
+import { DateTime } from "luxon";
 import Search from "../../assets/icons/search.svg";
 import Menu from "../../components/Menu";
+import ProductItemList from "../../components/ProductItemList";
 import { navigationItems } from "../../data/navigation";
 import { RoutePath } from "../../types/routes";
 import * as S from "./style";
-import { DateTime } from "luxon";
 
 const Home = () => {
   const dateDescription = DateTime.now().toLocaleString({
@@ -34,7 +36,9 @@ const Home = () => {
             <b>Pizzas</b>
           </S.HomeProductTitle>
           <S.HomeProductList>
-            <p>Lista de produtos aqui</p>
+            <ProductItemList>
+              <ProductItem />
+            </ProductItemList>
           </S.HomeProductList>
         </div>
       </S.HomeContent>
