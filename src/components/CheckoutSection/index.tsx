@@ -9,7 +9,7 @@ const CheckoutSection = () => {
     <S.CheckoutSection closing={false}>
       <S.CheckoutSectionConfirmation>
         <S.BackIcon />
-        <OrderConfirmation />{" "}
+        <OrderConfirmation />
       </S.CheckoutSectionConfirmation>
       <S.CheckoutSectionPayment>
         <S.CheckoutSectionPaymentHead>Pagamento</S.CheckoutSectionPaymentHead>
@@ -69,7 +69,7 @@ const CheckoutSection = () => {
             <S.PaymentActionsDetailsOrderType>
               <label htmlFor="card">Tipo de pedido</label>
               <select>
-                <option>{""}</option>
+                <option></option>
               </select>
             </S.PaymentActionsDetailsOrderType>
             <S.PaymentActionsDetailsTableNumber>

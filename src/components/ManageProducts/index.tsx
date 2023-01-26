@@ -1,5 +1,6 @@
-import Add  from "../../assets/icons/add.svg";
+import EditProduct from "../EditProduct";
 import { HTMLAttributes } from "react";
+import Add from "../../assets/icons/add.svg";
 import * as S from "./style";
 
 type ManageProductsType = HTMLAttributes<HTMLDivElement>;
@@ -24,7 +25,7 @@ const ManageProducts = ({ ...props }: ManageProductsProps) => {
           <S.EditForm type="text" placeholder="Descrição" />
           <S.EditForm type="url" placeholder="Imagem" />
         </S.AddCard>
-        {"Componente EditProduct"}
+        <EditProduct />
       </S.ManageProductsContent>
       <S.ManageProductsActions>
         <S.ManageProductsActionsCancel>Cancelar</S.ManageProductsActionsCancel>

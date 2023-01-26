@@ -3,7 +3,7 @@ import Info from "../../assets/icons/info.svg";
 import Market from "../../assets/icons/market.svg";
 import Users from "../../assets/icons/users.svg";
 import { RoutePath } from "../../types/routes";
-import NavColumnItem from "../NavColumn";
+import NavColumnItem from "../NavColumnItem";
 import * as S from "./style";
 
 type NavColumnType = HTMLAttributes<HTMLDivElement>;
