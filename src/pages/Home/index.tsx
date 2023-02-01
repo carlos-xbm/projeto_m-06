@@ -3,8 +3,10 @@ import { DateTime } from "luxon";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Search from "../../assets/icons/search.svg";
+import CheckoutSection from "../../components/CheckoutSection";
 import Menu from "../../components/Menu";
 import OrderDetails from "../../components/OrderDetails";
+import Overlay from "../../components/Overlay";
 import ProductItem from "../../components/ProductItem";
 import ProductItemList from "../../components/ProductItemList";
 import { navigationItems } from "../../data/navigation";
@@ -27,6 +29,7 @@ const Home = () => {
     OrderType.COMER_NO_LOCAL
   );
   const [orders, setOrders] = useState<OrderItemType[]>([]);
+  const [proceedToPayment, setProceedToPayment] = useState<boolean>(false);
 
   const handleNavigation = (path: RoutePath) => navigate(path);
 
@@ -90,15 +93,22 @@ const Home = () => {
       <aside>
         <OrderDetails
           orders={orders}
+          onProceedToPayment={() => setProceedToPayment(true)}
           onOrdersChange={(data) => setOrders(data)}
           onChangeActiveOrderType={(data) => setActiverOrderType(data)}
           activeOrderType={activeOrderType}
           onRemoveItem={handleRemoveOrderItem}
         />
       </aside>
-      {/* <Overlay>
-        <CheckoutSection />
-      </Overlay> */}
+      {proceedToPayment && (
+        <Overlay>
+          <CheckoutSection
+            orders={orders}
+            onOrdersChange={(data) => setOrders(data)}
+            onCloseSection={() => setProceedToPayment(false)}
+          />
+        </Overlay>
+      )}
     </S.Home>
   );
 };
