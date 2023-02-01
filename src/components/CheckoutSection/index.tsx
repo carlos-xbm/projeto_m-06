@@ -1,21 +1,23 @@
-import OrderConfirmation from "../../components/OrderConfirmation";
-import CheckboxIcon from "../../components/CheckboxIcon";
+import { HTMLAttributes, useState } from "react";
 import Card from "../../assets/icons/credit-card.svg";
 import Cash from "../../assets/icons/wallet.svg";
+import CheckboxIcon from "../../components/CheckboxIcon";
+import OrderConfirmation from "../../components/OrderConfirmation";
+import { OrderItemType } from "../../types/OrderItemType";
 import * as S from "./style";
-import { HTMLAttributes, useState } from "react";
-import { OrderItemType } from "types/OrderItemType";
 
 type CheckoutSectionType = HTMLAttributes<HTMLDivElement>;
 
 type CheckoutSectionProps = {
   orders: OrderItemType[];
+  selectedTable?: number;
   onOrdersChange: (orders: OrderItemType[]) => void;
   onCloseSection: () => void;
 } & CheckoutSectionType;
 
 const CheckoutSection = ({
   orders,
+  selectedTable,
   onOrdersChange,
   onCloseSection,
 }: CheckoutSectionProps) => {
@@ -28,7 +30,7 @@ const CheckoutSection = ({
   return (
     <S.CheckoutSection closing={false}>
       <S.CheckoutSectionConfirmation>
-        <S.BackIcon onClick={handleCloseSection} />
+        {/* <S.BackIcon onClick={handleCloseSection} /> */}
         <OrderConfirmation orders={orders} onOrdersChange={onOrdersChange} />
       </S.CheckoutSectionConfirmation>
       <S.CheckoutSectionPayment>
@@ -100,7 +102,7 @@ const CheckoutSection = ({
                 id="table"
                 placeholder="01"
                 disabled
-                value={""}
+                value={selectedTable}
               />
             </S.PaymentActionsDetailsTableNumber>
           </S.PaymentActionsDetails>
