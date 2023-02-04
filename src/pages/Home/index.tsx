@@ -1,7 +1,9 @@
-// - o arquivo `index.tsx`, que vai conter a função de renderização da página Home. Por enquanto será apenas uma mensagem:
+import { useQuery } from "@tanstack/react-query";
 import { DateTime } from "luxon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ProductService } from "../../services/ProductService";
+import { TableService } from "../../services/TableService";
 import Search from "../../assets/icons/search.svg";
 import CheckoutSection from "../../components/CheckoutSection";
 import Menu from "../../components/Menu";
@@ -10,10 +12,10 @@ import Overlay from "../../components/Overlay";
 import ProductItem from "../../components/ProductItem";
 import ProductItemList from "../../components/ProductItemList";
 import { navigationItems } from "../../data/navigation";
-import { products } from "../../mocks/products";
 import { OrderItemType } from "../../types/OrderItemType";
 import { OrderType } from "../../types/orderType";
 import { ProductResponse } from "../../types/Product";
+import { QueryKey } from "../../types/QueryKey";
 import { RoutePath } from "../../types/routes";
 import * as S from "./style";
 
@@ -25,9 +27,25 @@ const Home = () => {
 
   const navigate = useNavigate();
 
+  const { data: productsData } = useQuery(
+    [QueryKey.PRODUCTS],
+    ProductService.getLista
+  );
+
+  // Após a atualização da biblioteca react query (sendo utilizada como @tanstack/react-query), o método useQuery agora só aceita array como primeiro parâmetro ao invés de string como mostrado no vídeo
+  const { data: tablesData } = useQuery(
+    [QueryKey.TABLES],
+    TableService.getLista
+  );
+
+  const tables = tablesData || [];
+
+  const [products, setProducts] = useState<ProductResponse[]>([]);
+
   const [activeOrderType, setActiverOrderType] = useState(
     OrderType.COMER_NO_LOCAL
   );
+
   const [orders, setOrders] = useState<OrderItemType[]>([]);
   const [selectedTable, setSelectedTable] = useState<number | undefined>();
   const [proceedToPayment, setProceedToPayment] = useState<boolean>(false);
@@ -50,6 +68,10 @@ const Home = () => {
     setOrders(filtered);
   };
 
+  useEffect(() => {
+    setProducts(productsData || []);
+  }, [productsData]);
+
   return (
     <S.Home>
       <Menu
@@ -69,7 +91,7 @@ const Home = () => {
             </div>
             <S.HomeHeaderDetailsSearch>
               <Search />
-              <input type="text" placeholder="proucure pelo sabor" />
+              <input type="text" placeholder="Procure pelo sabor" />
             </S.HomeHeaderDetailsSearch>
           </S.HomeHeaderDetails>
         </header>
@@ -78,7 +100,7 @@ const Home = () => {
             <b>Pizzas</b>
           </S.HomeProductTitle>
           <S.HomeProductList>
-            <ProductItemList onSelectTable={setSelectedTable}>
+            <ProductItemList tables={tables} onSelectTable={setSelectedTable}>
               {Boolean(products.length) &&
                 products.map((product, index) => (
                   <ProductItem
@@ -107,6 +129,8 @@ const Home = () => {
           <CheckoutSection
             orders={orders}
             onOrdersChange={(data) => setOrders(data)}
+            onChangeActiveOrderType={(data) => setActiverOrderType(data)}
+            activeOrderType={activeOrderType}
             onCloseSection={() => setProceedToPayment(false)}
             selectedTable={selectedTable}
           />
