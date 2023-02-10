@@ -1,6 +1,6 @@
-import EditTable from "..//EditTable";
 import { HTMLAttributes } from "react";
 import Add from "../../assets/icons/add.svg";
+import EditTable from "..//EditTable";
 import * as S from "./style";
 
 type ManageTablesType = HTMLAttributes<HTMLDivElement>;

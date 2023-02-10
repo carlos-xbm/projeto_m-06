@@ -2,8 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ProductService } from "../../services/ProductService";
-import { TableService } from "../../services/TableService";
 import Search from "../../assets/icons/search.svg";
 import CheckoutSection from "../../components/CheckoutSection";
 import Menu from "../../components/Menu";
@@ -12,9 +10,13 @@ import Overlay from "../../components/Overlay";
 import ProductItem from "../../components/ProductItem";
 import ProductItemList from "../../components/ProductItemList";
 import { navigationItems } from "../../data/navigation";
+import { Auth } from "../../helpers/Auth";
+import { matchByText } from "../../helpers/Utils";
+import { ProductService } from "../../services/ProductService";
+import { TableService } from "../../services/TableService";
+import { ProductResponse } from "../../types/api/product";
 import { OrderItemType } from "../../types/OrderItemType";
 import { OrderType } from "../../types/orderType";
-import { ProductResponse } from "../../types/Product";
 import { QueryKey } from "../../types/QueryKey";
 import { RoutePath } from "../../types/routes";
 import * as S from "./style";
@@ -24,7 +26,6 @@ const Home = () => {
     ...DateTime.DATE_SHORT,
     weekday: "long",
   });
-
   const navigate = useNavigate();
 
   const { data: productsData } = useQuery(
@@ -32,7 +33,6 @@ const Home = () => {
     ProductService.getLista
   );
 
-  // Após a atualização da biblioteca react query (sendo utilizada como @tanstack/react-query), o método useQuery agora só aceita array como primeiro parâmetro ao invés de string como mostrado no vídeo
   const { data: tablesData } = useQuery(
     [QueryKey.TABLES],
     TableService.getLista
@@ -41,7 +41,6 @@ const Home = () => {
   const tables = tablesData || [];
 
   const [products, setProducts] = useState<ProductResponse[]>([]);
-
   const [activeOrderType, setActiverOrderType] = useState(
     OrderType.COMER_NO_LOCAL
   );
@@ -49,6 +48,10 @@ const Home = () => {
   const [orders, setOrders] = useState<OrderItemType[]>([]);
   const [selectedTable, setSelectedTable] = useState<number | undefined>();
   const [proceedToPayment, setProceedToPayment] = useState<boolean>(false);
+
+  const [filteredProducts, setFilteredProducts] = useState<ProductResponse[]>(
+    []
+  );
 
   const handleNavigation = (path: RoutePath) => navigate(path);
 
@@ -64,12 +67,18 @@ const Home = () => {
   };
 
   const handleRemoveOrderItem = (id: string) => {
-    const filtered = orders.filter((i) => i.product.id != id);
+    const filtered = orders.filter((i) => i.product.id !== id);
     setOrders(filtered);
+  };
+
+  const handleFilter = (title: string) => {
+    const list = products.filter(({ name }) => matchByText(name, title));
+    setFilteredProducts(list);
   };
 
   useEffect(() => {
     setProducts(productsData || []);
+    setFilteredProducts(productsData || []);
   }, [productsData]);
 
   return (
@@ -78,7 +87,7 @@ const Home = () => {
         active={RoutePath.HOME}
         navItems={navigationItems}
         onNavigate={handleNavigation}
-        onLogout={() => navigate(RoutePath.LOGIN)}
+        onLogout={Auth.logout}
       />
       <S.HomeContent>
         <header>
@@ -91,7 +100,11 @@ const Home = () => {
             </div>
             <S.HomeHeaderDetailsSearch>
               <Search />
-              <input type="text" placeholder="Procure pelo sabor" />
+              <input
+                type="text"
+                placeholder="Procure pelo sabor"
+                onChange={({ target }) => handleFilter(target.value)}
+              />
             </S.HomeHeaderDetailsSearch>
           </S.HomeHeaderDetails>
         </header>
@@ -102,7 +115,7 @@ const Home = () => {
           <S.HomeProductList>
             <ProductItemList tables={tables} onSelectTable={setSelectedTable}>
               {Boolean(products.length) &&
-                products.map((product, index) => (
+                filteredProducts.map((product, index) => (
                   <ProductItem
                     product={product}
                     key={`ProductItem-${index}`}

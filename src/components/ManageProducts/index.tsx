@@ -1,6 +1,6 @@
-import EditProduct from "../EditProduct";
 import { HTMLAttributes } from "react";
 import Add from "../../assets/icons/add.svg";
+import EditProduct from "../EditProduct";
 import * as S from "./style";
 
 type ManageProductsType = HTMLAttributes<HTMLDivElement>;

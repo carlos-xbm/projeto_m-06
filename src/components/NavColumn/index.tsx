@@ -1,11 +1,11 @@
-import  Market from "../../assets/icons/market.svg";
-import  Info from "../../assets/icons/info.svg";
-import  Users from "../../assets/icons/users.svg";
-import * as S from "./style";
-import { RoutePath } from "../../types/routes";
-import NavColumnItem from "../../components/NavColumnItem";
 import { HTMLAttributes } from "react";
 import { useNavigate } from "react-router-dom";
+import Info from "../../assets/icons/info.svg";
+import Market from "../../assets/icons/market.svg";
+import Users from "../../assets/icons/users.svg";
+import NavColumnItem from "../../components/NavColumnItem";
+import { RoutePath } from "../../types/routes";
+import * as S from "./style";
 
 type NavColumnType = HTMLAttributes<HTMLDivElement>;
 

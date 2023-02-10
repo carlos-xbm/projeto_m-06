@@ -1,4 +1,4 @@
-import Pencil  from "../../assets/icons/edit.svg";
+import Pencil from "../../assets/icons/edit.svg";
 import * as S from "./style";
 
 const EditTable = () => {

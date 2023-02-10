@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from "react-query";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BoxLogin from "../../components/BoxLogin";

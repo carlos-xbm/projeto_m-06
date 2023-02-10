@@ -1,6 +1,6 @@
-import EditUser from "../EditUser";
 import { HTMLAttributes } from "react";
 import Add from "../../assets/icons/add.svg";
+import EditUser from "../EditUser";
 import * as S from "./style";
 
 type ManageUsersType = HTMLAttributes<HTMLDivElement>;

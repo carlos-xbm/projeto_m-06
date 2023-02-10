@@ -1,11 +1,10 @@
+import { ProductResponse } from "types/api/product";
 import * as S from "./style";
-import { ProductResponse } from "types/Product";
 
 type ProductItemProps = {
   product: ProductResponse;
   onSelect: (data: ProductResponse) => void;
 };
-
 const ProductItem = ({ product, onSelect }: ProductItemProps) => {
   return (
     <S.ProductItem role="listitem" onClick={() => onSelect(product)}>

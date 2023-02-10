@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, useEffect, useState } from "react";
-import { OrderItemType } from "types/OrderItemType";
 import Trash from "../../assets/icons/trash.svg";
-import { ProductResponse } from "../../types/Product";
+import { ProductResponse } from "../../types/api/product";
+import { OrderItemType } from "../../types/OrderItemType";
 import * as S from "./style";
 
 type DivType = ButtonHTMLAttributes<HTMLDivElement>;
@@ -15,6 +15,8 @@ export type OrderItemProps = {
   onItemChange: (item: OrderItemType) => void;
 } & DivType;
 
+//Props que são funções, devolvem do filho para o pai
+//Props que não são funções, devolvem do pai para o filho
 const OrderItem = ({
   product,
   quantity,

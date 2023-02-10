@@ -1,5 +1,5 @@
+import { ButtonHTMLAttributes } from "react";
 import * as S from "./style";
-import React, { ButtonHTMLAttributes } from "react";
 
 type ButtonType = ButtonHTMLAttributes<HTMLButtonElement>;
 

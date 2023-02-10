@@ -1,7 +1,7 @@
-import { HTMLAttributes, useState, useEffect } from "react";
-import { OrderItemType } from "types/OrderItemType";
+import { HTMLAttributes, useEffect, useState } from "react";
 import OrderItem from "../../components/OrderItem";
 import OrderItemList from "../../components/OrderItemList";
+import { OrderItemType } from "../../types/OrderItemType";
 import * as S from "./style";
 
 type OrderConfirmationType = HTMLAttributes<HTMLDivElement>;

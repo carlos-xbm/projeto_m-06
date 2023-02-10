@@ -1,6 +1,6 @@
-import { RoutePath } from "../../types/routes";
 import Logout from "../../assets/icons/logout.svg";
 import logo from "../../assets/imgs/logo.png";
+import { RoutePath } from "../../types/routes";
 import * as S from "./style";
 import { NavItem } from "./types";
 
