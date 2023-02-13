@@ -1,4 +1,4 @@
-import { ProductResponse } from "types/api/product";
+import { ProductResponse } from "../../types/api/product";
 import * as S from "./style";
 
 type ProductItemProps = {
