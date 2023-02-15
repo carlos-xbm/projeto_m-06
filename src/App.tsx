@@ -5,14 +5,11 @@ import "./App.css";
 import theme from "./assets/styles/theme";
 import AppRouter from "./router";
 
-// const queryClient = new QueryClient();
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        {/* <QueryClientProvider client={queryClient} contextSharing={true}> */}
         <AppRouter />
-        {/* </QueryClientProvider> */}
       </BrowserRouter>
     </ThemeProvider>
   );

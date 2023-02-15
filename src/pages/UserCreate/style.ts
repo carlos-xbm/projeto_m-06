@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components";
 import { Theme } from "../../types/styled-components";
 
-export const ManageUsers = styled.section`
+export const UserCreate = styled.section`
   ${() => css`
     padding: 20px;
   `}
 `;
 
-export const ManageUsersTitle = styled.h1`
+export const UserCreateTitle = styled.h1`
   ${({ theme }) => css`
     ${theme.mixins.bodyStyle()};
     font-size: 20px;
@@ -15,7 +15,7 @@ export const ManageUsersTitle = styled.h1`
   `}
 `;
 
-export const ManageUsersSub = styled.h2`
+export const UserCreateSub = styled.h2`
   ${({ theme }) => css`
     ${theme.mixins.bodyStyle()};
     margin: 25px 0 0 0;
@@ -38,7 +38,7 @@ export const ManageUsersSub = styled.h2`
   `}
 `;
 
-export const ManageUsersContent = styled.div`
+export const UserCreateContent = styled.div`
   ${() => css`
     margin-top: 15px;
     justify-content: center;
@@ -51,7 +51,7 @@ export const ManageUsersContent = styled.div`
     overflow: auto;
   `}
 `;
-export const ManageUsersContentAdd = styled.div`
+export const UserCreateContentAdd = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;
@@ -71,7 +71,7 @@ export const ManageUsersContentAdd = styled.div`
   `}
 `;
 
-export const ManageUsersActions = styled.div`
+export const UserCreateActions = styled.div`
   ${() => css`
     margin-top: 20px;
     display: flex;
@@ -79,14 +79,14 @@ export const ManageUsersActions = styled.div`
   `}
 `;
 
-export const ManageUsersActionsCancel = styled.button`
+export const UserCreateActionsCancel = styled.button`
   ${({ theme }) => css`
     width: 172px;
     ${theme.mixins.buttonOutline(theme.colors.secondaryColor)};
   `}
 `;
 
-export const ManageUsersActionsSave = styled.button`
+export const UserCreateActionsSave = styled.button`
   ${({ theme }) => css`
     width: 172px;
     ${theme.mixins.buttonFilled()};

@@ -6,6 +6,7 @@ import { Auth } from "./helpers/Auth";
 import Home from "./pages/Home/index";
 import Login from "./pages/Login";
 import Settings from "./pages/Settings";
+import UserCreate from "./pages/UserCreate";
 import { RoutePath } from "./types/routes";
 
 const AuthenticatedRoutes = () => {
@@ -16,6 +17,7 @@ const AuthenticatedRoutes = () => {
 const Router = () => {
   return (
     <Routes>
+      <Route path={RoutePath.USERCREATE} element={<UserCreate />} />
       <Route path={RoutePath.LOGIN} element={<Login />} />
       <Route path="/" element={<AuthenticatedRoutes />}>
         <Route path={RoutePath.HOME} element={<Home />} />
