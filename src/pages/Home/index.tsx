@@ -2,7 +2,7 @@ import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
-import Search from "../../assets/icons/Search.svg";
+import Search from "../../assets/icons/search.svg";
 import CheckoutSection from "../../components/CheckoutSection";
 import Menu from "../../components/Menu";
 import OrderDetails from "../../components/OrderDetails";
