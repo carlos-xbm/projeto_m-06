@@ -48,11 +48,11 @@ export const CheckoutSectionConfirmation = styled.div`
   `}
 `;
 
-// export const BackIcon = styled(Back)`
-//   ${() => css`
-//     cursor: pointer;
-//   `}
-// `;
+export const BackIcon = styled.div`
+  ${() => css`
+    cursor: pointer;
+  `}
+`;
 
 export const CheckoutSectionPayment = styled.div`
   ${() => css`

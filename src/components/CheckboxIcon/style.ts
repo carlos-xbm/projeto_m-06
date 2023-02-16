@@ -31,11 +31,11 @@ export const CheckboxIcon = styled.div<CheckboxIconStyled>`
   `}
 `;
 
-// export const CheckboxIconCheck = styled(Check)`
-//   ${({ theme }) => css`
-//     color: ${theme.colors.primaryColor};
-//     position: absolute;
-//     top: 5px;
-//     right: 5px;
-//   `}
-// `;
+export const CheckboxIconCheck = styled.div`
+  ${({ theme }) => css`
+    color: ${theme.colors.primaryColor};
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  `}
+`;

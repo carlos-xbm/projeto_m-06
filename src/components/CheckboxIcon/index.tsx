@@ -17,7 +17,7 @@ const CheckboxIcon = ({
 }: CheckboxIconProps) => {
   return (
     <S.CheckboxIcon active={active} {...props}>
-      {/* {active && <S.CheckboxIconCheck />} */}
+      {active && <S.CheckboxIconCheck />}
       {icon && <div>{icon}</div>}
       <div>{value}</div>
     </S.CheckboxIcon>

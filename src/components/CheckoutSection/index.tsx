@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from "react-query";
 import { HTMLAttributes, useState } from "react";
 import Card from "../../assets/icons/credit-card.svg";
 import Cash from "../../assets/icons/wallet.svg";
@@ -62,7 +62,7 @@ const CheckoutSection = ({ orders, onOrdersChange, onChangeActiveOrderType, acti
     return (
         <S.CheckoutSection closing={closing}>
             <S.CheckoutSectionConfirmation>
-                {/* <S.BackIcon onClick={handleCloseSection} /> */}
+                <S.BackIcon onClick={handleCloseSection} />
                 <OrderConfirmation orders={orders} onOrdersChange={onOrdersChange} />
             </S.CheckoutSectionConfirmation>
             <S.CheckoutSectionPayment>

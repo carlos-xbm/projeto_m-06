@@ -18,6 +18,9 @@ const BoxLogin = ({ onSubmitData, errorMessage }: BoxLoginProps) => {
     const data = { nickname, password };
     onSubmitData(data);
   };
+  const handleCreate =():void =>{
+    
+  }
   return (
     <S.BoxLogin>
       <S.BoxLoginLogo>
@@ -30,17 +33,18 @@ const BoxLogin = ({ onSubmitData, errorMessage }: BoxLoginProps) => {
       <S.BoxLoginForm>
         <input
           type="text"
-          placeholder="Nickname"
+          placeholder="carlos-xbm"
           value={nickname}
           onChange={({ target }) => setNickname(target.value)}
         />
         <input
           type="password"
-          placeholder="Senha"
+          placeholder="Abcd@123"
           value={password}
           onChange={({ target }) => setPassword(target.value)}
         />
         <ButtonLarge value="Entrar" type="button" onClick={handleSubmit} />
+        <ButtonLarge value="Criar Usuário" type="button"  />
       </S.BoxLoginForm>
       {Boolean(errorMessage.length) && (
         <S.BoxLoginError>{errorMessage}</S.BoxLoginError>
