@@ -18,9 +18,6 @@ const BoxLogin = ({ onSubmitData, errorMessage }: BoxLoginProps) => {
     const data = { nickname, password };
     onSubmitData(data);
   };
-  const handleCreate =():void =>{
-    
-  }
   return (
     <S.BoxLogin>
       <S.BoxLoginLogo>
@@ -44,7 +41,7 @@ const BoxLogin = ({ onSubmitData, errorMessage }: BoxLoginProps) => {
           onChange={({ target }) => setPassword(target.value)}
         />
         <ButtonLarge value="Entrar" type="button" onClick={handleSubmit} />
-        <ButtonLarge value="Criar Usuário" type="button"  />
+        {/* <ButtonLarge value="Criar Usuário" type="button" /> */}
       </S.BoxLoginForm>
       {Boolean(errorMessage.length) && (
         <S.BoxLoginError>{errorMessage}</S.BoxLoginError>
